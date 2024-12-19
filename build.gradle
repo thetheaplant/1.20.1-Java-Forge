@@ -1,6 +1,6 @@
 buildscript {
     repositories {
-        // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
+
         maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
         maven {
             url "https://plugins.gradle.org/m2/"
@@ -14,18 +14,12 @@ buildscript {
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0'
         classpath "org.jlleitschuh.gradle:ktlint-gradle:12.1.1"
 
-        // OPTIONAL Gradle plugin for Kotlin Serialization
-        //classpath 'org.jetbrains.kotlin:kotlin-serialization:1.6.10'
-
     }
 }
 
 plugins {
-    // Adds the Kotlin Gradle plugin
     id "org.jetbrains.kotlin.jvm" version "1.9.22"
-    // OPTIONAL Kotlin Serialization plugin
     id 'org.jetbrains.kotlin.plugin.serialization' version '1.9.22'
-
     id 'eclipse'
     id 'idea'
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
@@ -69,10 +63,10 @@ publishing {
 }
 
 
-//group = mod_version
+
 
 base {
-    archivesName = mod_id //+ version
+    archivesName = mod_id
 }
 
 java {
@@ -85,21 +79,10 @@ minecraft {
 
     copyIdeResources = true
     runs {
-        // applies to all the run configs below
         configureEach {
             workingDirectory project.file('run')
-
-            // Recommended logging data for a userdev environment
-            // The markers can be added/remove as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
             property 'forge.logging.markers', 'REGISTRIES'
 
-
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
             mods {
@@ -110,7 +93,7 @@ minecraft {
         }
 
         client {
-            // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
+
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
@@ -119,9 +102,6 @@ minecraft {
             args '--nogui'
         }
 
-        // This run config launches GameTestServer and runs all registered gametests, then exits.
-        // By default, the server will crash when no gametests are provided.
-        // The gametest system is also enabled by default for other run configs under the /test command.
         gameTestServer {
             property 'forge.enabledGameTestNamespaces', mod_id
         }
@@ -204,11 +184,6 @@ minecraft.runs.all {
     }
 }
 
-
-// This block of code expands all declared replace properties in the specified resource targets.
-// A missing property will result in an error. Properties are expanded using ${} Groovy notation.
-// When "copyIdeResources" is enabled, this will also run before the game launches in IDE environments.
-// See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
 tasks.named('processResources', ProcessResources).configure {
     var replaceProperties = [
             minecraft_version: minecraft_version, forge_version: forge_version,
