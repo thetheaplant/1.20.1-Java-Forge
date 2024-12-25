@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "io.github.thetheaplant.vs_nyoom.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "vsnyoom.refmap.json",
+  "mixins": [
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

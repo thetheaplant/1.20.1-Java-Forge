@@ -1,36 +1,45 @@
-modLoader = "javafml"
-loaderVersion = "[47,)"
+modLoader = "kotlinforforge"
+loaderVersion = "[4.10,)"
 issueTrackerURL = "${issue_tracker}"
 license = "${mod_license}"
+
 [[mods]]
-modId = "vs_nyoom"
-version = "1.20.1"
-authors = ["Thea, likzerd"]
+modId = "vsnyoom"
+version = "0.0.1"
+displayName = "VS Nyoom"
+isplayURL = "${homepage}"
+authors = ["likzerd, Thea"]
+description = '''
+${mod_description}
+'''
+logoFile = "icon.png"
 
-description = ''' A VS2 addon that adds various engines, thrusters and fuel system! '''
-
-[[dependencies.vs_nyoom}]]
+[[dependencies.vsnyoom]]
 modId = "forge"
 mandatory = true
-versionRange = "[47,)"
+versionRange = "[${forge_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vs_nyoom]]
+[[dependencies.vsnyoom]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[${minecraft_version},)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.vs_nyoom]]
+[[dependencies.vsnyoom]]
 modId = "valkyrienskies"
 mandatory = true
 versionRange = "[${vs2_version},)"
 ordering = "AFTER"
 side = "BOTH"
 
-modLoader="kotlinforforge"
-loaderVersion="[4.10,)"
+[[dependencies.vsnyoom]]
+modId="kotlinforforge"
+mandatory=true
+versionRange="[3.12.0,)"
+ordering="BEFORE"
+side="BOTH"
 
 
